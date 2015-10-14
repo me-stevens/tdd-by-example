@@ -4,6 +4,7 @@
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MultiCurrencyMoney {
 
@@ -15,5 +16,10 @@ public class MultiCurrencyMoney {
 
         product = five.times(3);
         assertEquals(15, product.amount);
+    }
+
+    @Test
+    public void equality() {
+        assertTrue(new Dollar(5).equals(new Dollar(5)));
     }
 }
