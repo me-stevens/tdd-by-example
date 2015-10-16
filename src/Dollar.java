@@ -5,11 +5,10 @@
 public class Dollar extends Money{
 
     public Dollar(int amount, String currency) {
-        this.amount   = amount;
-    public Dollar times(int multiplier) {
-        return new Dollar(amount * multiplier);
-        this.currency = currency;
+        super(amount, currency);
     }
 
+    public Money times(int multiplier) {
+        return Money.dollar(amount * multiplier);
     }
 }
