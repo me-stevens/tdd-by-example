@@ -33,4 +33,10 @@ public class MultiCurrencyMoney {
 
         assertFalse(Money.dollar(5).equals(new Franc(6)));
     }
+
+    @Test
+    public void currency() {
+        assertEquals("USD", Money.dollar(1).currency());
+        assertEquals("CHF", Money.franc(1).currency());
+    }
 }

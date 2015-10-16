@@ -20,4 +20,6 @@ public abstract class Money {
     }
 
     abstract Money times(int amount);
+
+    abstract String currency();
 }
