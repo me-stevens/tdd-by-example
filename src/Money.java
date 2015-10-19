@@ -1,8 +1,9 @@
+
 /**
  * Created by admin on 14/10/15.
  */
 
-public class Money {
+public class Money implements Expression {
 
     protected int amount;
     protected String currency;
@@ -31,6 +32,10 @@ public class Money {
 
     public String currency() {
         return currency;
+    }
+
+    public Expression plus(Money addend) {
+        return new Money(this.amount + addend.amount, currency);
     }
 
     @Override
