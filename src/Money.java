@@ -19,23 +19,32 @@ public class Money implements Expression {
     }
 
     static Money dollar(int amount) {
+
         return new Money(amount, "USD");
     }
 
     static Money franc(int amount) {
+
         return new Money(amount, "CHF");
     }
 
     public Money times(int multiplier) {
+
         return new Money(amount * multiplier, currency);
     }
 
     public String currency() {
+
         return currency;
     }
 
     public Expression plus(Money addend) {
-        return new Money(this.amount + addend.amount, currency);
+
+        return new Sum(this, addend);
+    }
+
+    public Money reduce(String to) {
+        return this;
     }
 
     @Override

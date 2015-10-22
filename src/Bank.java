@@ -4,7 +4,7 @@
  */
 public class Bank {
 
-    public Money reduce(Expression sum, String to) {
-        return Money.dollar(10);
+    public Money reduce(Expression source, String to) {
+           return source.reduce(to);
     }
 }
