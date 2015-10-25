@@ -1,6 +1,7 @@
 import unittest
-from was_run   import WasRun
-from test_case import TestCase
+from was_run     import WasRun
+from test_case   import TestCase
+from test_result import TestResult
 
 class TestCaseTest(TestCase):
 
@@ -16,15 +17,21 @@ class TestCaseTest(TestCase):
   def testResult(self):
     test   = WasRun("testMethod")
     result = test.run()
-    assert("1 run, 0 failed" == result.summary())
+    assert("1 run, 0 failed" == result.summary() )
 
   def testFailedResult(self):
     test   = WasRun("testBrokenMethod")
     result = test.run()
-    assert("1 run, 1 failed" == result.summary())
-    
-if __name__ == '__main__':
-    unittest.main()
+    assert("1 run, 1 failed" == result.summary() )
 
-TestCaseTest("testTemplateMethod").run()
+  def testFailedResultFormatting(self):
+    result = TestResult()
+    result.testStarted()
+    result.testFailed()
+    assert("1 run, 1 failed" == result.summary() )
+
+print TestCaseTest("testTemplateMethod").run().summary()
+print TestCaseTest("testResult").run().summary()
+print TestCaseTest("testFailedResult").run().summary()
+print TestCaseTest("testFailedResultFormatting").run().summary()
 

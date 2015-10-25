@@ -1,14 +1,14 @@
 from test_case import TestCase
 
-class WasRun:
+class WasRun(TestCase):
 
   def __init__(self, name):
     self.wasRun   = None
     self.wasSetUp = 1
     self.name     = name
     self.log      = "setUp "
-    #TestCase.__init__(self, name)
-    testcase      = TestCase(name)
+    TestCase.__init__(self, name)
+    #testcase      = TestCase(name)
 
   def setUp(self):
     self.log = "setUp "
