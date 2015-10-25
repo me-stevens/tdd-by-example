@@ -2,36 +2,51 @@ import unittest
 from was_run     import WasRun
 from test_case   import TestCase
 from test_result import TestResult
+from test_suite  import TestSuite
 
 class TestCaseTest(TestCase):
 
   def setUp(self):
-    self.test = WasRun("testMethod")
+    self.result = TestResult()
 
   def testTemplateMethod(self):
     test = WasRun("testMethod")
-    test.run()
-    assert("setUp " == self.test.log)
-#    assert("setUp testMethod tearDown" == self.test.log)
+    test.run(self.result)
+#    assert("setUp " == self.test.log)
+    assert("setUp testMethod tearDown" == test.log)
 
   def testResult(self):
     test   = WasRun("testMethod")
-    result = test.run()
-    assert("1 run, 0 failed" == result.summary() )
+    test.run(self.result)
+    assert("1 run, 0 failed" == self.result.summary() )
 
   def testFailedResult(self):
     test   = WasRun("testBrokenMethod")
-    result = test.run()
-    assert("1 run, 1 failed" == result.summary() )
+    test.run(self.result)
+    assert("1 run, 1 failed" == self.result.summary() )
 
   def testFailedResultFormatting(self):
-    result = TestResult()
     result.testStarted()
     result.testFailed()
-    assert("1 run, 1 failed" == result.summary() )
+    assert("1 run, 1 failed" == self.result.summary() )
 
-print TestCaseTest("testTemplateMethod").run().summary()
-print TestCaseTest("testResult").run().summary()
-print TestCaseTest("testFailedResult").run().summary()
-print TestCaseTest("testFailedResultFormatting").run().summary()
+  def testSuite(self):
+    suite = TestSuite()
+    suite.add(WasRun("testMethod"))
+    suite.add(WasRun("testBrokenMethod"))
+
+    suite.run(self.result)
+    assert("2 run, 1 failed" == self.result.summary() )
+
+suite = TestSuite()
+
+suite.add(TestCaseTest("testTemplateMethod"))
+suite.add(TestCaseTest("testResult"))
+suite.add(TestCaseTest("testFailedResult"))
+suite.add(TestCaseTest("testFailedResultFormatting"))
+suite.add(TestCaseTest("testSuite"))
+
+result = TestResult()
+suite.run(result)
+print result.summary()
 
