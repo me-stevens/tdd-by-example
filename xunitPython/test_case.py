@@ -1,3 +1,5 @@
+from test_result import TestResult
+
 class TestCase:
 
   def __init__(self, name):
@@ -10,9 +12,10 @@ class TestCase:
     pass
 
   def run(self):
-    #result.testStarted()
+    result = TestResult()
+    result.testStarted()
     self.setUp()
     method = getattr(self, self.name)
     method()
     self.tearDown()
-
+    return result

@@ -14,10 +14,10 @@ class WasRun:
     self.log = "setUp "
 
   def testMethod(self):
-    self.log    = self.log + "testMethod" 
+    self.log = self.log + "testMethod"
 
   def tearDown(self):
-    self.log    = self.log + "tearDown"
+    self.log = self.log + "tearDown"
 
   def run(self):
     method = getattr(self, self.name)
@@ -26,3 +26,6 @@ class WasRun:
   def wasSetUp(self):
     self.wasRun   = None
     self.wasSetUp = 1
+
+  def testBrokenMethod(self):
+    raise Exception
