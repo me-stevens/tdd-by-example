@@ -1,0 +1,2 @@
+python -m unittest test_was_run
+python -m unittest test_case_test
