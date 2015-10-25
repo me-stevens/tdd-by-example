@@ -1,10 +1,11 @@
 import unittest
-from was_run import WasRun
+from was_run   import WasRun
+from test_case import TestCase
 
 class TestWasRun(unittest.TestCase):
 
-  def test_wasRun(self):
-    test = WasRun("testMethod")
+  def wasRun(self):
+    test = WasRun(TestCase)
     print test.wasRun
     test.run()
     print test.wasRun
