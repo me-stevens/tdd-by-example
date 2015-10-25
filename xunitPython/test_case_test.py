@@ -15,5 +15,9 @@ class TestCaseTest(TestCase):
     self.test.run()
     assert(self.test.wasSetUp)
 
+if __name__ == '__main__':
+    unittest.main()
+
 TestCaseTest("testRunning").run()
 TestCaseTest("testSetUp").run()
+
