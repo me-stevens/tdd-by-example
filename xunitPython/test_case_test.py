@@ -11,6 +11,7 @@ class TestCaseTest(TestCase):
     test = WasRun("testMethod")
     test.run()
     assert("setUp " == self.test.log)
+#    assert("setUp testMethod tearDown" == self.test.log)
 
 if __name__ == '__main__':
     unittest.main()
