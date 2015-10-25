@@ -14,3 +14,7 @@ class WasRun:
   def run(self):
     method = getattr(self, self.name)
     method()
+
+  def wasSetUp(self):
+    self.wasRun   = None
+    self.wasSetUp = 1
