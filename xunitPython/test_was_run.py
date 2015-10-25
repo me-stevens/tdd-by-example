@@ -6,5 +6,5 @@ class TestWasRun(unittest.TestCase):
   def test_wasRun(self):
     test = WasRun("testMethod")
     print test.wasRun
-    test.testMethod()
+    test.run()
     print test.wasRun
